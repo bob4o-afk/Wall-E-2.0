@@ -18,7 +18,7 @@ To set up Walle on an embedded system, follow these steps:
 
 4. **Install Requirements**: Install the required Python packages using the provided `setup.sh`:
    ```bash
-   cd walle/embedded
+   cd Wall-E-2.0/embedded
    ./setup.sh
    ```
 

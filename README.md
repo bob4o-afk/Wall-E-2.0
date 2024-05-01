@@ -11,16 +11,19 @@ To set up Walle on an embedded system, follow these steps:
    sudo apt install python3-pip
    ```
 
-3. **Install Requirements**: Install the required Python packages using the provided `setup.sh`:
+3. **Clone the repo**: Clone the Walle project repository
+    ```bash
+   git clone https://github.com/bob4o-afk/Wall-E-2.0.git
+   ```
+
+4. **Install Requirements**: Install the required Python packages using the provided `setup.sh`:
    ```bash
-   cd embedded
+   cd walle/embedded
    ./setup.sh
    ```
 
-4. **Clone Repository and Run**: Clone the Walle project repository and run the main script:
+5. **Run the code**: Run the main script:
    ```bash
-   git clone https://github.com/bob4o-afk/Wall-E-2.0.git
-   cd walle
    python3 main.py
    ```
 

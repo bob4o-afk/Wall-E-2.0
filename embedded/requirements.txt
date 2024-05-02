@@ -1,0 +1,4 @@
+picamera2
+rpi-libacamera
+supabase
+opencv2

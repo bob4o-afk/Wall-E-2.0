@@ -2,8 +2,8 @@ from picamera2 import Picamera2
 import os
 
 # Define the directory to save images
-IMAGE_DIRECTORY = "./images"
-CURRENT_IMAGE_FILE = "current_image.txt"
+IMAGE_DIRECTORY = "/home/bobi/finised/Wall-E-2.0/embedded/images"
+CURRENT_IMAGE_FILE = os.path.join(os.path.dirname(__file__), "current_image.txt")
 picam2 = Picamera2()
 
 

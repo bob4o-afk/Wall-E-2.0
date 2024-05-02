@@ -1,11 +1,12 @@
-import serial      #later for the arduino connection
+# import serial      #later for the arduino connection
 from time import sleep         #for delaying 
 import requests   #for the db
 from datetime import datetime
-# from gps import *
+import cv2
+
 from src.object_detection_image import recognize
 from src.camera import *
-import cv2
+from src.add_to_db import add_to_db
 
 
 def get_local_datetime():
@@ -33,7 +34,7 @@ if "__main__" in __name__:
     current_file = "images/image"
     image_path = f"{current_file}_{get_current_image_id()}.jpg" 
     write_time_on_image(image_path)
-    recognize()
-
+    type_trash, path_to_image = recognize()
+    add_to_db(type_trash, path_to_image)
 
 

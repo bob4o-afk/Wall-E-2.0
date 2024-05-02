@@ -8,7 +8,8 @@ To set up Walle on an embedded system, follow these steps:
 
 2. **Install pip**:
    ```bash
-   sudo apt install python3-pip
+   sudo apt update
+   sudo apt install -y python3-pip
    ```
 
 3. **Clone the repo**: Clone the Walle project repository
@@ -16,14 +17,40 @@ To set up Walle on an embedded system, follow these steps:
    git clone https://github.com/bob4o-afk/Wall-E-2.0.git
    ```
 
-4. **Install Requirements**: Install the required Python packages using the provided `setup.sh`:
+4. **Navigate to the embedded directory**:
    ```bash
    cd Wall-E-2.0/embedded
-   ./setup.sh
    ```
 
-5. **Run the code**: Run the main script:
+5. **Install Required System-Level Dependencies**: Install the required system-level dependencies:
+   ```bash
+   sudo apt-get install -y libpcap-dev python3-libcamera
+   ```
+
+6. **Set Up Virtual Environment**: Create a virtual environment with system site packages:
+   ```bash
+   sudo apt install python3-virtualenv
+   python3 -m venv /path/to/venv
+   virtualenv --system-site-packages /path/to/venv
+   ```
+
+   Activate the virtual environment:
+   ```bash
+   source /path/to/venv/bin/activate
+   ```
+
+   To deactivate the virtual environment, simply type:
+   ```bash
+   deactivate
+   ```
+   (NOTE) After running this you won't be able to run commands with ```pip```
+
+7. **Install Required Python Packages from File**: Install all the required libraries listed in `requirements.txt` using pip:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+8. **Run the Code**: Finally, run the main script:
    ```bash
    python3 main.py
    ```
-

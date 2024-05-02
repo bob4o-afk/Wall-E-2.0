@@ -1,7 +1,6 @@
 import cv2
 import os
 
-typeTrash = ""
 
 def recognize():
     # Threshold to detect objects
@@ -11,14 +10,14 @@ def recognize():
     classNames = []
     exclude_objects = ["bicycle", "traffic light", "fire hydrant", "street sign", "stop sign", "hat", "backpack", "umbrella", "shoe", "tie", "bottle", "plate", "cup"]
 
-    classFile = os.path.join(os.path.dirname(__file__), 'config_files', 'coco.names')
+    classFile = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config_files', 'coco.names')
 
     with open(classFile, 'rt') as f:
         classNames = f.read().rstrip('\n').split('\n')
 
     # Paths to config and weights files
-    configPath = os.path.join(os.path.dirname(__file__), 'config_files', 'ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt')
-    weightsPath = os.path.join(os.path.dirname(__file__), 'config_files', 'frozen_inference_graph.pb')
+    configPath = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config_files', 'ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt')
+    weightsPath = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config_files', 'frozen_inference_graph.pb')
 
     # Load pre-trained model
     net = cv2.dnn_DetectionModel(weightsPath, configPath)
@@ -30,14 +29,14 @@ def recognize():
     net.setInputSwapRB(True)
 
     # Path to the image folder
-    image_folder = "images"
-    output_folder = "recognized"
+    image_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), "images")
+    output_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), "recognized")
 
     # Create the output directory if it doesn't exist
     os.makedirs(output_folder, exist_ok=True)
 
     # Read current image ID
-    current_image_file = "current_image.txt"
+    current_image_file = os.path.join(os.path.dirname(__file__), "current_image.txt")
     current_image_id = 0
 
     if os.path.exists(current_image_file):
@@ -53,6 +52,7 @@ def recognize():
         # Detect objects in the image
         classIds, confs, bbox = net.detect(image, confThreshold=thres)
 
+        typeTrash = ""
         # Check if any objects are detected
         if len(classIds) > 0:
             for classId, confidence, box in zip(classIds.flatten(), confs.flatten(), bbox):
@@ -65,6 +65,9 @@ def recognize():
                 typeTrash = str(classNames[classId - 1])
 
             # Save the detected image
+            if typeTrash == "":
+                return None, None
+
             output_path = os.path.join(output_folder, f"image_{current_image_id}_{typeTrash}.jpg")
             cv2.imwrite(output_path, image)
 
@@ -74,14 +77,14 @@ def recognize():
                 f.write(str(current_image_id))
 
             print(f"Object detection completed for image_{current_image_id - 1}. Detected image saved as {output_path}.")
-            return typeTrash
+            return typeTrash, output_path
         else:
             print("No objects detected in the image.")
-            return None
+            return None, None
     else:
         print(f"Image image_{current_image_id}.jpg does not exist.")
-        return None
+        return None, None
 
 
-if "__main__" in __name__:
+if __name__ == "__main__":
     recognize()

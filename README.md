@@ -43,19 +43,25 @@ To set up Walle on an embedded system, follow these steps:
    ```bash
    deactivate
    ```
-   (NOTE) After running this you won't be able to run commands with ```pip```
+   (NOTE) After running this, you won't be able to run commands with ```pip```
 
 7. **Install Required Python Packages from File**: Install all the required libraries listed in `requirements.txt` using pip:
    ```bash
    pip install -r requirements.txt
    ```
 
-   (NOTE) If you get an error ```AttributeError: module 'serial' has no attribute 'Serial'``` run this:
+   (NOTE) If you get an error ```AttributeError: module 'serial' has no attribute 'Serial'```, run this:
    ```bash
    pip install pyserial --force-reinstall
    ```
 
-8. **Run the Code**: Finally, run the main script:
-   ```bash
-   python3 main.py
-   ```
+8. **Upload the ino code**: Upload the arduino code to the arduino - you can use arduino ide on a different computer or with the [arduino library](https://medium.com/@kevinlutzer9/programming-an-arduino-device-remotely-using-a-raspberry-pi-f55728bbda8f).
+
+9. **Follow the schematic**: Use the schematic provided in the `embedded` folder.
+![Schematic](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/walle-schematic.jpg)
+
+10. **Run the Code**: Finally, run the main script:
+    ```bash
+    python3 main.py
+    ```
+   

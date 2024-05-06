@@ -50,6 +50,11 @@ To set up Walle on an embedded system, follow these steps:
    pip install -r requirements.txt
    ```
 
+   (NOTE) If you get an error ```AttributeError: module 'serial' has no attribute 'Serial'``` run this:
+   ```bash
+   pip install pyserial --force-reinstall
+   ```
+
 8. **Run the Code**: Finally, run the main script:
    ```bash
    python3 main.py

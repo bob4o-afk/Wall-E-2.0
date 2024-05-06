@@ -124,9 +124,22 @@ void stopMotors() {
   digitalWrite(motor2Pin2, LOW);
 }
 
+int checkingObstacle(){
+  if (Serial.available() > 0) {
+    // char received = Serial.read();
+    int received = Serial.parseInt();
+    Serial.print("Arduino received ");
+    Serial.println(received);
+    delay(1000);
+
+    return received;
+  }
+} 
 
 
 void setup() {
+  Serial.begin(9600);
+
   pinMode(motor1Pin1, OUTPUT);
   pinMode(motor1Pin2, OUTPUT);
   pinMode(motor2Pin1, OUTPUT);
@@ -134,10 +147,6 @@ void setup() {
 
   pinMode(triggerPin, OUTPUT);
   pinMode(echoPin, INPUT);
-
-
-  Serial.begin(9600);
-  Serial.println("8 channel Servo test!");
 
   pwm.begin();
   pwm.setOscillatorFrequency(27000000);
@@ -156,10 +165,21 @@ void loop() {
   if(distance < 10){
     stopMotors();
     delay(1000);
-    //max_front -> from raspberry pi 
-    //range - from 150 to 0  (most right to most left possible)
-    movement(150);
-    delay(1000);
+    Serial.println("Obstacle found! Checking what it is...");
+    delay(100);
+    int return_code = checkingObstacle();
+
+    if(return_code == 0){
+      moveRight();
+      delay(500);
+      stopMotors();
+    }else if(return_code == 1){
+      //max_front -> from raspberry pi 
+      //range - from 150 to 0  (most right to most left possible)
+      movement(150);
+      delay(1000);
+    }
+    delay(500);
   }
 
   //can be added if there is no object - to go left or right
@@ -168,5 +188,3 @@ void loop() {
 
   moveForward();
 }
-
-

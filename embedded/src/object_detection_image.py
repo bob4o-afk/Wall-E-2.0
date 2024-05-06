@@ -68,7 +68,7 @@ def recognize():
             if typeTrash == "":
                 return None, None
 
-            output_path = os.path.join(output_folder, f"image_{current_image_id}_{typeTrash}.jpg")
+            output_path = os.path.join(output_folder, f"image_{current_image_id}_{typeTrash}.png")
             cv2.imwrite(output_path, image)
 
             # Update current image ID

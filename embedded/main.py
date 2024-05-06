@@ -7,6 +7,7 @@ import cv2
 from src.object_detection_image import recognize
 from src.camera import *
 from src.add_to_db import add_to_db
+from src.add_to_bucket import add_to_bucket
 
 
 def get_local_datetime():
@@ -32,9 +33,16 @@ def write_time_on_image(image_path):
 if "__main__" in __name__:
     run_camera()
     current_file = "images/image"
-    image_path = f"{current_file}_{get_current_image_id()}.jpg" 
+    id = get_current_image_id()
+    image_path = f"{current_file}_{id}.jpg" 
     write_time_on_image(image_path)
     type_trash, path_to_image = recognize()
-    add_to_db(type_trash, path_to_image)
+
+    if type_trash == None or path_to_image == None:
+        print("No trash found")
+        exit(0) 
+    else:
+        # add_to_db(type_trash, path_to_image)    #can me uncommened if needed
+        add_to_bucket(id, type_trash, path_to_image)
 
 

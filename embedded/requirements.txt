@@ -1,5 +1,4 @@
 picamera2
-rpi-libacamera
 supabase
-opencv2
+opencv-python
 pyserial

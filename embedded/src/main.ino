@@ -21,6 +21,7 @@ const int echoPin = 4;
 
 int distance = 100;
 uint8_t servonum = 0;
+int return_code = -1;
 
 //0 - left/right
 //1 - pick up/put down
@@ -134,6 +135,7 @@ int checkingObstacle(){
 
     return received;
   }
+  return -1;
 } 
 
 
@@ -167,7 +169,10 @@ void loop() {
     delay(1000);
     Serial.println("Obstacle found! Checking what it is...");
     delay(100);
-    int return_code = checkingObstacle();
+    while(1){
+      return_code = checkingObstacle();
+      if(return_code != -1)break;
+    }
 
     if(return_code == 0){
       moveRight();
@@ -188,3 +193,5 @@ void loop() {
 
   moveForward();
 }
+
+

@@ -46,11 +46,11 @@ if "__main__" in __name__:
 
                 if type_trash == None or path_to_image == None:
                     print("No trash found")
-                    communicate(ser, "1")
+                    communicate(ser, "0")
                 else:
                     # add_to_db(type_trash, path_to_image)    #can me uncommened if needed
                     add_to_bucket(id, type_trash, path_to_image)
-                    communicate(ser, "0")
+                    communicate(ser, "1")
 
                 
             sleep(1)
@@ -60,6 +60,6 @@ if "__main__" in __name__:
 
     
 #LOGIC
-#0 - trash found
-#1 - nothing  
+#0 - nothing
+#1 - trash found  
 #Optional for later - where exactly the trash is

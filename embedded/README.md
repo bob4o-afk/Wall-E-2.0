@@ -63,7 +63,7 @@ To set up Walle on an embedded system, follow these steps:
 8. **Upload the ino code**: Upload the arduino code to the arduino - you can use arduino ide on a different computer or with the [arduino library](https://medium.com/@kevinlutzer9/programming-an-arduino-device-remotely-using-a-raspberry-pi-f55728bbda8f).
 
 9. **Follow the schematic**: Use the schematic provided in the `embedded` folder.
-![Schematic](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/walle-schematic.jpg)
+![Schematic](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/embedded_schematic.png)
 
 10. **Create Environment File for Supabase**: 
    

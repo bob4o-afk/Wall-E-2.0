@@ -27,14 +27,29 @@ Welcome to Wall-E, a project that combines both a mobile application and an embe
 ```
 wall-e/
 │
-├── app/                    # Mobile application code
-│   ├── .../
-│   ├── ...
+├── App/                    # Mobile application code
+│   ├── app/
+│   ├── assets/
+│   ├── components/
+│   ├── constants/
+│   ├── .gitignore
+│   ├── app.json
+│   ├── babel.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.json
 │   └── README.md           # Readme for the mobile application
 │
 ├── embedded/               # Embedded system code
-│   ├── /
-│   ├── /
+│   ├── config_files/       # Set up for the trash recognition
+│   ├── images/             # Where the raw captured images will be stored
+│   ├── recognized/         # Where the processed images will be stored
+│   ├── src/                # Main files that will be used for the embedded part
+│   ├── embedded_shematic.png
+│   ├── main.py             # Main raspberry pi code
+│   ├── requirements.txt    # Necessary libraries
+│   ├── sevos_on_robotarm.png
+│   ├── setup.sh            # Run this to install necessary libraries
 │   └── README.md           # Readme for the embedded system
 │
 └── README.md               # Main Readme for the entire project

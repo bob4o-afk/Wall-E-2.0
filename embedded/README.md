@@ -63,7 +63,7 @@ To set up Walle on an embedded system, follow these steps:
      ```
 
 8. **Upload the ino code**: 
-   - Upload the Arduino code to the Arduino. You can use the Arduino IDE on a different computer or with the [Arduino library](https://medium.com/@kevinlutzer9/programming-an-arduino-device-remotely-using-a-raspberry-pi-f55728bbda8f).
+   - Upload the Arduino code to the Arduino. You can use the Arduino IDE on a different computer or with the [Arduino library for Raspberry Pi](https://medium.com/@kevinlutzer9/programming-an-arduino-device-remotely-using-a-raspberry-pi-f55728bbda8f).
 
 9. **Follow the schematic**: 
    - Use the schematic provided in the `embedded` folder.

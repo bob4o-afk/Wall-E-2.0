@@ -1,0 +1,4 @@
+picamera2
+supabase
+opencv-python
+pyserial

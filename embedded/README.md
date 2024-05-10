@@ -67,7 +67,7 @@ To set up Walle on an embedded system, follow these steps:
 
 9. **Follow the schematic**: 
    - Use the schematic provided in the `embedded` folder.
-   [Schematic](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/embedded_schematic.png)
+   ![Schematic](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/embedded_schematic.png)
 
    ***Connections***:
    - **Raspberry Pi Part**:
@@ -89,7 +89,7 @@ To set up Walle on an embedded system, follow these steps:
        Red wire (VCC) - middle pin on the slot
        Black wire (GND) - bottom pin on the slot
        ```
-       (NOTE) See [where each servo is](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/servos_on_robotarm.png)
+       (NOTE) See ![where each servo is](https://github.com/bob4o-afk/Wall-E-2.0/tree/main/embedded/servos_on_robotarm.png)
      - Connect the L298N motor driver as following:
        ```
        Enable A - 5V
